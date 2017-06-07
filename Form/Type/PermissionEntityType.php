@@ -12,7 +12,6 @@
 namespace Sylius\Bundle\RbacBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
-use Sylius\Bundle\ResourceBundle\Form\Type\ResourceChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**

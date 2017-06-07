@@ -13,6 +13,7 @@ namespace spec\Sylius\Bundle\RbacBundle\Form\EventSubscriber;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Sylius\Bundle\RbacBundle\Form\EventSubscriber\AddParentFormSubscriber;
 use Sylius\Component\Rbac\Model\RoleInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
@@ -32,7 +33,7 @@ final class AddParentFormSubscriberSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Sylius\Bundle\RbacBundle\Form\EventSubscriber\AddParentFormSubscriber');
+        $this->shouldHaveType(AddParentFormSubscriber::class);
     }
 
     function it_implements_event_subscriber_interface()

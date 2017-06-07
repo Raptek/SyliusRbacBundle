@@ -14,7 +14,10 @@ namespace spec\Sylius\Bundle\RbacBundle\Form\Type;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sylius\Bundle\RbacBundle\Form\EventSubscriber\AddParentFormSubscriber;
+use Sylius\Bundle\RbacBundle\Form\Type\PermissionType;
 use Sylius\Bundle\ResourceBundle\Form\EventSubscriber\AddCodeFormSubscriber;
+use Sylius\Component\Rbac\Model\Permission;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,12 +29,12 @@ final class PermissionTypeSpec extends ObjectBehavior
 {
     function let()
     {
-        $this->beConstructedWith('Permission', ['sylius']);
+        $this->beConstructedWith(Permission::class, ['sylius']);
     }
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Sylius\Bundle\RbacBundle\Form\Type\PermissionType');
+        $this->shouldHaveType(PermissionType::class);
     }
 
     function it_is_a_form_type()
@@ -42,7 +45,7 @@ final class PermissionTypeSpec extends ObjectBehavior
     function it_should_build_form_with_proper_fields(FormBuilder $builder)
     {
         $builder
-            ->add('description', 'textarea', Argument::any())
+            ->add('description', TextareaType::class, Argument::any())
             ->shouldBeCalled()
             ->willReturn($builder)
         ;
@@ -66,17 +69,12 @@ final class PermissionTypeSpec extends ObjectBehavior
     {
         $resolver
             ->setDefaults([
-                'data_class' => 'Permission',
+                'data_class' => Permission::class,
                 'validation_groups' => ['sylius'],
             ])
             ->shouldBeCalled()
         ;
 
         $this->configureOptions($resolver);
-    }
-
-    function it_has_valid_name()
-    {
-        $this->getName()->shouldReturn('sylius_permission');
     }
 }

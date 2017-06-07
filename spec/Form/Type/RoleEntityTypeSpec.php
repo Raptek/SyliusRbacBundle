@@ -13,7 +13,8 @@ namespace spec\Sylius\Bundle\RbacBundle\Form\Type;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Bundle\ResourceBundle\Form\Type\ResourceChoiceType;
+use Sylius\Bundle\RbacBundle\Form\Type\ResourceChoiceType;
+use Sylius\Bundle\RbacBundle\Form\Type\RoleEntityType;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Sylius\Component\Resource\Metadata\MetadataInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -30,7 +31,7 @@ final class RoleEntityTypeSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Sylius\Bundle\RbacBundle\Form\Type\RoleEntityType');
+        $this->shouldHaveType(RoleEntityType::class);
     }
 
     function it_is_a_form()
@@ -38,7 +39,7 @@ final class RoleEntityTypeSpec extends ObjectBehavior
         $this->shouldHaveType(ResourceChoiceType::class);
     }
 
-    function it_has_options(OptionsResolver $resolver, $metadata)
+    function it_has_options(OptionsResolver $resolver, MetadataInterface $metadata)
     {
         $metadata->getDriver()->willReturn(SyliusResourceBundle::DRIVER_DOCTRINE_ORM);
         $resolver->setDefaults(Argument::withKey('class'))->shouldBeCalled()->willReturn($resolver);

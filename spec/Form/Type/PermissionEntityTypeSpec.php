@@ -13,7 +13,8 @@ namespace spec\Sylius\Bundle\RbacBundle\Form\Type;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Bundle\ResourceBundle\Form\Type\ResourceChoiceType;
+use Sylius\Bundle\RbacBundle\Form\Type\PermissionEntityType;
+use Sylius\Bundle\RbacBundle\Form\Type\ResourceChoiceType;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Sylius\Component\Resource\Metadata\MetadataInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -30,7 +31,7 @@ final class PermissionEntityTypeSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Sylius\Bundle\RbacBundle\Form\Type\PermissionEntityType');
+        $this->shouldHaveType(PermissionEntityType::class);
     }
 
     function it_is_a_form()

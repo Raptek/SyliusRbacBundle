@@ -12,7 +12,9 @@
 namespace spec\Sylius\Bundle\RbacBundle\Form\Type;
 
 use PhpSpec\ObjectBehavior;
+use Sylius\Bundle\RbacBundle\Form\Type\SecurityRoleChoiceType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -29,7 +31,7 @@ final class SecurityRoleChoiceTypeSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Sylius\Bundle\RbacBundle\Form\Type\SecurityRoleChoiceType');
+        $this->shouldHaveType(SecurityRoleChoiceType::class);
     }
 
     function it_is_a_form()
@@ -52,11 +54,6 @@ final class SecurityRoleChoiceTypeSpec extends ObjectBehavior
 
     function it_has_a_parent()
     {
-        $this->getParent()->shouldReturn('choice');
-    }
-
-    function it_has_a_name()
-    {
-        $this->getName()->shouldReturn('sylius_security_role_choice');
+        $this->getParent()->shouldReturn(ChoiceType::class);
     }
 }
